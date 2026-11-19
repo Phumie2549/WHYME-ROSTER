@@ -1059,16 +1059,20 @@
         }
 
         // --- Cloud Firestore Initialization & Real-Time Listeners ---
-        async function initCloudDatabase() {
+       // Firebase Configuration - WHYME ROSTER
+const firebaseConfig = {
+  apiKey: "AIzaSyDkZ9FVnI_wLJgdDKVgsyPyAweF54UCzJ4",
+  authDomain: "whyme-roster.firebaseapp.com",
+  projectId: "whyme-roster",
+  storageBucket: "whyme-roster.firebasestorage.app",
+  messagingSenderId: "140233536771",
+  appId: "1:140233536771:web:3cfe78b0955686fc712536",
+  measurementId: "G-3YV6DB8VY8"
+};
+         {
             setSyncStatus('syncing', 'กำลังเชื่อมต่อฐานข้อมูลกลาง...');
             try {
-                let firebaseConfig = null;
-                if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-                    firebaseConfig = JSON.parse(__firebase_config);
-                } else {
-                    const savedCustom = localStorage.getItem(CUSTOM_FB_KEY);
-                    if (savedCustom) firebaseConfig = JSON.parse(savedCustom);
-                }
+                
 
                 if (!firebaseConfig || !firebaseConfig.apiKey) {
                     throw new Error("No external Firebase config provided; using local database.");
